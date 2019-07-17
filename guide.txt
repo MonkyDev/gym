@@ -1,0 +1,19 @@
+PARA CUESTIONES DE PERMISOS
+1. instalar shinobi y seguir los pasos que tiene: https://github.com/caffeinated/shinobi
+2. modificar las columnas de tipo string:unique, en las migraciones de esta ruta : api-sdgp/vendor/caffeinated/shinobi/migrations
+
+3. ejecutar las migraciones a la DB.
+4. crear los permisos manuales, crear el seeder: php artisan make:seeder PermissionsTableSeeder.
+5. en el archivo seeder creado incluir el modelo: use Caffeinated\Shinobi\Models\Permission;
+6. y crear los permisos de acuerdo al controlador resource, ya hice mi auto generador: en el array de $modules debes de cargar el nombre del slug.
+7. agregar el middleware de shinobi en: api-sdgp/app/Http/Kernel.php en el apartado de $routeMiddleware, agregar.
+8. crear los permisos a las rutas desde el constructor del file controlador o en el de rutas para el backend.
+9. usar el helper @can('ruta.metodo') html @endcan para lo visual en el frontend.
+10. para actualizar lo visual cuando ya se permite ver el html por la asignacion del rol en el Modelo de  User.php se agrega el nombre del paquete use Caffeinated\Shinobi\Traits\ShinobiTrait;  dentro de la clase el: ", ShinobiTrait".
+
+
+
+
+
+
+INSERT INTO users VALUES (1, 'Ricardo', 'GIX', '$2y$10$8Y1js2Ony5DpycDMQCBjtudC9nO1ol7RfgjXONaKGkjiOxrhq6Z7q', null, '2018-08-20 18:49:48', '2018-08-20 18:49:48');
